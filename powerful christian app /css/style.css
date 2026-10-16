@@ -1,0 +1,122 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  background: #e3f2fd;
+  color: #0d47a1;
+  text-align: center;
+}
+
+header {
+  background: #0d47a1;
+  color: white;
+  padding: 35px 15px;
+}
+
+header h1 {
+  margin: 0;
+  font-size: 32px;
+}
+
+header p {
+  font-size: 18px;
+  margin-bottom: 0;
+}
+
+nav {
+  background: white;
+  padding: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+nav a {
+  color: #0d47a1;
+  text-decoration: none;
+  font-weight: bold;
+  margin: 0 8px;
+  font-size: 15px;
+}
+
+nav a:hover {
+  text-decoration: underline;
+}
+
+.container {
+  max-width: 750px;
+  margin: auto;
+  padding: 25px 15px;
+}
+
+.card {
+  background: white;
+  padding: 25px;
+  margin-bottom: 25px;
+  border-radius: 15px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+h2 {
+  color: #0d47a1;
+}
+
+.welcome {
+  font-size: 25px;
+  font-weight: bold;
+}
+
+.buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: center;
+  margin-top: 15px;
+}
+
+.button {
+  display: inline-block;
+  background: #0d47a1;
+  color: white;
+  padding: 14px 22px;
+  margin: 8px;
+  border-radius: 10px;
+  text-decoration: none;
+  font-size: 17px;
+  font-weight: bold;
+}
+
+.button:hover {
+  background: #1565c0;
+}
+
+.verse {
+  font-size: 19px;
+  font-style: italic;
+  line-height: 1.6;
+  color: #333;
+}
+
+.reference {
+  text-align: center;
+  font-weight: bold;
+  color: #1976d2;
+  margin-top: 12px;
+}
+
+.encouragement {
+  font-size: 18px;
+  line-height: 1.6;
+  color: #333;
+}
+
+footer {
+  background: #0d47a1;
+  color: white;
+  padding: 25px 15px;
+  margin-top: 30px;
+}
