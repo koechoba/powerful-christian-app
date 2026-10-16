@@ -1,0 +1,780 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#2e7d32">
+
+  <title>Season 2 - Walking With Christ</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #eef8ef;
+      color: #173b22;
+    }
+
+    header {
+      background: linear-gradient(135deg, #1b5e20, #66bb6a);
+      color: white;
+      text-align: center;
+      padding: 40px 20px;
+      border-radius: 0 0 30px 30px;
+    }
+
+    header .season-icon {
+      font-size: 50px;
+    }
+
+    header h1 {
+      margin: 8px 0;
+      font-size: 32px;
+    }
+
+    header p {
+      margin: 0;
+      font-size: 17px;
+    }
+
+    .container {
+      max-width: 750px;
+      margin: auto;
+      padding: 20px;
+    }
+
+    .welcome,
+    .card {
+      background: white;
+      padding: 22px;
+      border-radius: 20px;
+      margin-bottom: 20px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+    }
+
+    .welcome {
+      text-align: center;
+    }
+
+    h2 {
+      color: #2e7d32;
+      margin-top: 0;
+    }
+
+    .subtitle {
+      color: #607d64;
+      line-height: 1.6;
+    }
+
+    /* Verse */
+
+    .verse {
+      background: #f1f8f2;
+      padding: 20px;
+      border-radius: 15px;
+      text-align: center;
+    }
+
+    .verse-text {
+      font-size: 21px;
+      line-height: 1.7;
+      font-style: italic;
+    }
+
+    .reference {
+      color: #2e7d32;
+      font-weight: bold;
+    }
+
+    /* Daily devotional */
+
+    .devotional {
+      background: linear-gradient(135deg, #f1f8e9, #ffffff);
+      border-left: 5px solid #43a047;
+      padding: 18px;
+      border-radius: 12px;
+      line-height: 1.7;
+    }
+
+    .devotional-date {
+      color: #388e3c;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+
+    /* Prayer */
+
+    .prayer {
+      line-height: 1.8;
+    }
+
+    .amen {
+      text-align: center;
+      font-weight: bold;
+      margin-top: 15px;
+      color: #2e7d32;
+    }
+
+    /* Reading plan */
+
+    .reading-day {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 13px;
+      margin: 8px 0;
+      background: #f5faf5;
+      border-radius: 12px;
+    }
+
+    .reading-day input {
+      width: 20px;
+      height: 20px;
+      accent-color: #2e7d32;
+    }
+
+    .reading-day label {
+      flex: 1;
+      cursor: pointer;
+    }
+
+    /* Challenge */
+
+    .challenge {
+      background: #f1f8f2;
+      border-left: 5px solid #2e7d32;
+      padding: 18px;
+      border-radius: 12px;
+      line-height: 1.7;
+    }
+
+    /* Reflection */
+
+    textarea {
+      width: 100%;
+      min-height: 130px;
+      padding: 14px;
+      border: 1px solid #b7cdb9;
+      border-radius: 12px;
+      resize: vertical;
+      font-family: Arial, sans-serif;
+      font-size: 15px;
+      outline: none;
+    }
+
+    textarea:focus {
+      border-color: #2e7d32;
+    }
+
+    /* Buttons */
+
+    .button {
+      display: block;
+      width: 100%;
+      border: none;
+      text-align: center;
+      background: #2e7d32;
+      color: white;
+      padding: 14px;
+      margin-top: 15px;
+      border-radius: 12px;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    .button:hover {
+      background: #1b5e20;
+    }
+
+    .secondary {
+      background: #558b2f;
+    }
+
+    /* Progress */
+
+    .progress-container {
+      background: #dcebdd;
+      border-radius: 20px;
+      height: 20px;
+      overflow: hidden;
+      margin-top: 12px;
+    }
+
+    .progress-bar {
+      height: 100%;
+      width: 0%;
+      background: #43a047;
+      transition: width 0.4s ease;
+    }
+
+    .progress-text {
+      text-align: center;
+      margin-top: 10px;
+      font-weight: bold;
+      color: #2e7d32;
+    }
+
+    /* Milestones */
+
+    .milestone {
+      padding: 15px;
+      border-radius: 12px;
+      background: #f5faf5;
+      margin: 10px 0;
+    }
+
+    .milestone.locked {
+      opacity: 0.55;
+    }
+
+    /* Announcement */
+
+    .announcement {
+      background: linear-gradient(135deg, #fff8e1, #ffffff);
+      border-left: 5px solid #f9a825;
+      padding: 18px;
+      border-radius: 12px;
+      line-height: 1.7;
+    }
+
+    /* Video */
+
+    .video-box {
+      background: #f5faf5;
+      padding: 18px;
+      border-radius: 14px;
+      text-align: center;
+    }
+
+    /* Back buttons */
+
+    .navigation {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 30px 20px;
+      color: #607d64;
+      font-size: 14px;
+    }
+
+    @media (max-width: 500px) {
+      header h1 {
+        font-size: 27px;
+      }
+
+      .navigation {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+
+  <div class="season-icon">🌿</div>
+
+  <h1>Season 2</h1>
+
+  <p>Walking With Christ</p>
+
+</header>
+
+<main class="container">
+
+  <!-- Welcome -->
+
+  <section class="welcome">
+
+    <h2>Welcome to Season 2 🙏</h2>
+
+    <p class="subtitle">
+      This season is about learning to walk with Christ every day,
+      growing in His Word, serving others, and allowing His love
+      to guide our choices.
+    </p>
+
+  </section>
+
+
+  <!-- Announcement -->
+
+  <section class="card">
+
+    <h2>📢 Season Announcement</h2>
+
+    <div class="announcement">
+
+      <strong>Welcome to a new season!</strong>
+
+      <p>
+        Take time each day to pray, read God's Word,
+        reflect on what you are learning, and put your faith
+        into action.
+      </p>
+
+    </div>
+
+  </section>
+
+
+  <!-- Verse -->
+
+  <section class="card">
+
+    <h2>📖 Verse of the Season</h2>
+
+    <div class="verse">
+
+      <p class="verse-text">
+        "Whoever wants to be my disciple must deny themselves
+        and take up their cross and follow me."
+      </p>
+
+      <p class="reference">
+        Matthew 16:24
+      </p>
+
+    </div>
+
+  </section>
+
+
+  <!-- Daily Devotional -->
+
+  <section class="card">
+
+    <h2>☀️ Daily Devotional</h2>
+
+    <div class="devotional">
+
+      <div class="devotional-date">
+        Today's Thought
+      </div>
+
+      <p>
+        Walking with Christ means trusting Him not only when
+        everything is easy, but also when you do not know
+        what will happen next.
+      </p>
+
+      <p>
+        Take one step today. Pray, listen, learn, and choose
+        to follow Christ in the small decisions of your day.
+      </p>
+
+    </div>
+
+  </section>
+
+
+  <!-- Prayer -->
+
+  <section class="card">
+
+    <h2>🙏 Prayer of the Season</h2>
+
+    <p class="prayer">
+
+      Heavenly Father, thank You for sending Jesus Christ
+      to show us the way.
+
+      Help me to follow Him faithfully each day.
+      Give me wisdom to make good choices, courage to do
+      what is right, and a heart that loves others.
+
+      Help me to grow closer to You and reflect the character
+      of Christ in my daily life.
+
+    </p>
+
+    <p class="amen">
+      In Jesus' name, Amen. 🙏
+    </p>
+
+  </section>
+
+
+  <!-- Bible Reading Plan -->
+
+  <section class="card">
+
+    <h2>📚 7-Day Bible Reading Plan</h2>
+
+    <p class="subtitle">
+      Read one chapter each day and think about what it teaches
+      you about Jesus.
+    </p>
+
+    <div class="reading-day">
+      <input type="checkbox" id="day1" class="reading-check">
+      <label for="day1">Day 1 — Mark 1</label>
+    </div>
+
+    <div class="reading-day">
+      <input type="checkbox" id="day2" class="reading-check">
+      <label for="day2">Day 2 — Mark 2</label>
+    </div>
+
+    <div class="reading-day">
+      <input type="checkbox" id="day3" class="reading-check">
+      <label for="day3">Day 3 — Mark 3</label>
+    </div>
+
+    <div class="reading-day">
+      <input type="checkbox" id="day4" class="reading-check">
+      <label for="day4">Day 4 — Mark 4</label>
+    </div>
+
+    <div class="reading-day">
+      <input type="checkbox" id="day5" class="reading-check">
+      <label for="day5">Day 5 — Mark 5</label>
+    </div>
+
+    <div class="reading-day">
+      <input type="checkbox" id="day6" class="reading-check">
+      <label for="day6">Day 6 — Mark 6</label>
+    </div>
+
+    <div class="reading-day">
+      <input type="checkbox" id="day7" class="reading-check">
+      <label for="day7">Day 7 — Mark 7</label>
+    </div>
+
+    <div class="progress-container">
+      <div class="progress-bar" id="progressBar"></div>
+    </div>
+
+    <p class="progress-text" id="progressText">
+      0 of 7 completed
+    </p>
+
+  </section>
+
+
+  <!-- Faith Challenge -->
+
+  <section class="card">
+
+    <h2>🎯 Faith Challenge</h2>
+
+    <div class="challenge">
+
+      <strong>This season's challenge:</strong>
+
+      <p>
+        Find one way each day to show Christ's love to someone.
+      </p>
+
+      <p>
+        You could encourage someone, help someone,
+        forgive someone, pray for someone, or simply
+        show kindness.
+      </p>
+
+    </div>
+
+  </section>
+
+
+  <!-- Reflection -->
+
+  <section class="card">
+
+    <h2>💭 Personal Reflection</h2>
+
+    <p>
+      Take a moment to think about today's lesson.
+    </p>
+
+    <p>
+      <strong>What is one thing you believe God is teaching
+      you during this season?</strong>
+    </p>
+
+    <textarea
+      id="reflection"
+      placeholder="Write your reflection here...">
+    </textarea>
+
+    <button class="button" onclick="saveReflection()">
+      💾 Save Reflection
+    </button>
+
+    <button class="button secondary" onclick="clearReflection()">
+      🗑️ Clear Reflection
+    </button>
+
+    <p id="saveMessage"></p>
+
+  </section>
+
+
+  <!-- Christian Videos -->
+
+  <section class="card">
+
+    <h2>🎬 Christian Videos</h2>
+
+    <div class="video-box">
+
+      <p>
+        Watch Christian videos and encouraging messages
+        as part of your Season 2 journey.
+      </p>
+
+      <a class="button" href="videos.html">
+        ▶️ Watch Videos
+      </a>
+
+    </div>
+
+  </section>
+
+
+  <!-- Milestones -->
+
+  <section class="card">
+
+    <h2>🏆 Season Milestones</h2>
+
+    <div class="milestone">
+      🌱 <strong>First Step</strong>
+      <br>
+      Complete your first Bible reading.
+    </div>
+
+    <div class="milestone">
+      📖 <strong>Growing in the Word</strong>
+      <br>
+      Complete all 7 Bible readings.
+    </div>
+
+    <div class="milestone">
+      ❤️ <strong>Serving Others</strong>
+      <br>
+      Complete the Season 2 faith challenge.
+    </div>
+
+    <div class="milestone">
+      🌿 <strong>Walking With Christ</strong>
+      <br>
+      Continue growing in faith throughout the season.
+    </div>
+
+  </section>
+
+
+  <!-- Book -->
+
+  <section class="card">
+
+    <h2>📖 Featured Book</h2>
+
+    <p>
+      Continue learning and growing through Christian books
+      and resources available in the app.
+    </p>
+
+    <a class="button" href="book.html">
+      📚 Open Book
+    </a>
+
+  </section>
+
+
+  <!-- Opinions -->
+
+  <section class="card">
+
+    <h2>💬 Share Your Thoughts</h2>
+
+    <p>
+      What does walking with Christ mean to you?
+      Share your thoughts and encourage others.
+    </p>
+
+    <a class="button" href="opinions.html">
+      💭 Share Your Opinion
+    </a>
+
+  </section>
+
+
+  <!-- Navigation -->
+
+  <section class="card">
+
+    <h2>🧭 Seasons</h2>
+
+    <div class="navigation">
+
+      <a class="button" href="season1.html">
+        🌱 Season 1
+      </a>
+
+      <a class="button" href="index.html">
+        🏠 Home
+      </a>
+
+    </div>
+
+  </section>
+
+</main>
+
+
+<footer>
+
+  <p>✝️ Living a Christian Life</p>
+
+  <p>
+    Season 2 — Walking With Christ
+  </p>
+
+  <p>
+    Keep growing. Keep praying. Keep following Christ. 🙏
+  </p>
+
+</footer>
+
+
+<script>
+
+  /* ============================
+     BIBLE READING PROGRESS
+     ============================ */
+
+  const checkboxes =
+    document.querySelectorAll(".reading-check");
+
+  const progressBar =
+    document.getElementById("progressBar");
+
+  const progressText =
+    document.getElementById("progressText");
+
+
+  function updateProgress() {
+
+    let completed = 0;
+
+    checkboxes.forEach((checkbox, index) => {
+
+      if (checkbox.checked) {
+        completed++;
+      }
+
+      localStorage.setItem(
+        "season2-reading-" + index,
+        checkbox.checked
+      );
+
+    });
+
+    const percentage =
+      (completed / checkboxes.length) * 100;
+
+    progressBar.style.width =
+      percentage + "%";
+
+    progressText.textContent =
+      completed +
+      " of " +
+      checkboxes.length +
+      " completed";
+
+  }
+
+
+  checkboxes.forEach((checkbox, index) => {
+
+    const saved =
+      localStorage.getItem(
+        "season2-reading-" + index
+      );
+
+    if (saved === "true") {
+      checkbox.checked = true;
+    }
+
+    checkbox.addEventListener(
+      "change",
+      updateProgress
+    );
+
+  });
+
+
+  updateProgress();
+
+
+  /* ============================
+     SAVE REFLECTION
+     ============================ */
+
+  const reflection =
+    document.getElementById("reflection");
+
+  const saveMessage =
+    document.getElementById("saveMessage");
+
+
+  const savedReflection =
+    localStorage.getItem(
+      "season2-reflection"
+    );
+
+
+  if (savedReflection) {
+    reflection.value = savedReflection;
+  }
+
+
+  function saveReflection() {
+
+    localStorage.setItem(
+      "season2-reflection",
+      reflection.value
+    );
+
+    saveMessage.textContent =
+      "✅ Your reflection has been saved on this device.";
+
+    saveMessage.style.color =
+      "#2e7d32";
+
+  }
+
+
+  function clearReflection() {
+
+    reflection.value = "";
+
+    localStorage.removeItem(
+      "season2-reflection"
+    );
+
+    saveMessage.textContent =
+      "Reflection cleared.";
+
+    saveMessage.style.color =
+      "#607d64";
+
+  }
+
+</script>
+
+</body>
+</html>

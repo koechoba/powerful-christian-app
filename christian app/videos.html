@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Christian Videos</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #e3f2fd;
+      color: #123;
+    }
+
+    header {
+      background: linear-gradient(135deg, #0d47a1, #1976d2);
+      color: white;
+      text-align: center;
+      padding: 28px 15px;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+    }
+
+    header h1 {
+      margin: 0 0 8px;
+      font-size: 28px;
+    }
+
+    header p {
+      margin: 0;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: auto;
+      padding: 20px 15px 40px;
+    }
+
+    .intro {
+      background: white;
+      border-radius: 16px;
+      padding: 20px;
+      margin-bottom: 20px;
+      text-align: center;
+      box-shadow: 0 3px 12px rgba(0,0,0,0.1);
+    }
+
+    .intro h2 {
+      color: #0d47a1;
+      margin-top: 0;
+    }
+
+    .channel-button {
+      display: inline-block;
+      margin-top: 10px;
+      padding: 12px 20px;
+      background: #1565c0;
+      color: white;
+      text-decoration: none;
+      border-radius: 10px;
+      font-weight: bold;
+    }
+
+    #loading {
+      text-align: center;
+      padding: 30px;
+      font-size: 18px;
+      color: #1565c0;
+    }
+
+    #error {
+      display: none;
+      background: #ffebee;
+      color: #b71c1c;
+      padding: 18px;
+      border-radius: 12px;
+      margin-bottom: 20px;
+      text-align: left;
+      word-break: break-word;
+    }
+
+    #error h3 {
+      margin-top: 0;
+    }
+
+    #error pre {
+      white-space: pre-wrap;
+      font-size: 13px;
+      background: #fff;
+      padding: 10px;
+      border-radius: 8px;
+      overflow-x: auto;
+    }
+
+    #videos {
+      display: grid;
+      grid-template-columns: repeat(
+        auto-fit,
+        minmax(280px, 1fr)
+      );
+      gap: 20px;
+    }
+
+    .video-card {
+      background: white;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 3px 12px rgba(0,0,0,0.12);
+    }
+
+    .thumbnail {
+      width: 100%;
+      display: block;
+      aspect-ratio: 16 / 9;
+      object-fit: cover;
+    }
+
+    .video-content {
+      padding: 16px;
+    }
+
+    .video-title {
+      margin: 0 0 10px;
+      color: #0d47a1;
+      font-size: 18px;
+      line-height: 1.4;
+    }
+
+    .date {
+      color: #777;
+      font-size: 14px;
+      margin-bottom: 15px;
+    }
+
+    .watch-button {
+      display: block;
+      text-align: center;
+      background: #1565c0;
+      color: white;
+      padding: 11px;
+      border-radius: 9px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    footer {
+      text-align: center;
+      padding: 25px;
+      color: #555;
+      font-size: 14px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <h1>✝ Christian Videos</h1>
+    <p>Watch, learn, and grow in faith</p>
+  </header>
+
+  <main class="container">
+
+    <div class="intro">
+      <h2>Christian Shorts</h2>
+
+      <p>
+        Latest Christian videos and encouraging messages.
+      </p>
+
+      <a
+        class="channel-button"
+        href="https://www.youtube.com/@christianshorts2763"
+        target="_blank"
+        rel="noopener noreferrer">
+        ▶ Visit YouTube Channel
+      </a>
+    </div>
+
+    <div id="loading">
+      ⏳ Loading latest Christian videos...
+    </div>
+
+    <div id="error"></div>
+
+    <div id="videos"></div>
+
+  </main>
+
+  <footer>
+    © 2026 Living a Christian Life
+  </footer>
+
+
+  <script>
+
+    /*
+     * ============================================
+     * YOUTUBE SETTINGS
+     * ============================================
+     */
+
+    const API_KEY = "AIzaSyDSWbTIVDN-ioddJKAdoeOOcp6fvoUL2qM";
+
+    const CHANNEL_ID =
+      "UCBXOFnNTULFaAnj24PAeblg";
+
+    const MAX_RESULTS = 12;
+
+
+    /*
+     * ============================================
+     * LOAD VIDEOS
+     * ============================================
+     */
+
+    async function loadVideos() {
+
+      const loading =
+        document.getElementById("loading");
+
+      const error =
+        document.getElementById("error");
+
+      const videosContainer =
+        document.getElementById("videos");
+
+      loading.style.display = "block";
+      error.style.display = "none";
+
+      try {
+
+        /*
+         * Check API key
+         */
+
+        if (
+          !API_KEY ||
+          API_KEY === "AIzaSyDSWbTIVDN-ioddJKAdoeOOcp6fvoUL2qM,"
+        ) {
+
+          throw new Error(
+            "API key is missing. " +
+            "Add your YouTube API key to videos.html."
+          );
+
+        }
+
+
+        /*
+         * Check channel ID
+         */
+
+        if (!CHANNEL_ID) {
+
+          throw new Error(
+            "YouTube channel ID is missing."
+          );
+
+        }
+
+
+        /*
+         * Build YouTube API URL
+         */
+
+        const url =
+          "https://www.googleapis.com/youtube/v3/search" +
+          "?part=snippet" +
+          "&channelId=" +
+          encodeURIComponent(CHANNEL_ID) +
+          "&maxResults=" +
+          MAX_RESULTS +
+          "&order=date" +
+          "&type=video" +
+          "&key=" +
+          encodeURIComponent(0EY);
+
+
+        /*
+         * Request YouTube
+         */
+
+        const response =
+          await fetch(url);
+
+
+        /*
+         * Read response
+         */
+
+        const data =
+          await response.json().catch(() => null);
+
+
+        /*
+         * Show actual Google error
+         */
+
+        if (!response.ok) {
+
+          const googleError =
+            data?.error;
+
+          const message =
+            googleError?.message ||
+            "YouTube API request failed.";
+
+          const reason =
+            googleError?.errors?.[0]?.reason ||
+            "Unknown";
+
+          const domain =
+            googleError?.errors?.[0]?.domain ||
+            "Unknown";
+
+          throw new Error(
+            "HTTP Status: " +
+            response.status +
+            "\n\n" +
+
+            "Google Error: " +
+            message +
+            "\n\n" +
+
+            "Reason: " +
+            reason +
+            "\n\n" +
+
+            "Domain: " +
+            domain
+          );
+
+        }
+
+
+        /*
+         * Hide loading
+         */
+
+        loading.style.display = "none";
+
+
+        /*
+         * Check videos
+         */
+
+        if (
+          !data ||
+          !data.items ||
+          data.items.length === 0
+        ) {
+
+          videosContainer.innerHTML =
+            "<p style='text-align:center;'>" +
+            "YouTube returned no videos." +
+            "</p>";
+
+          return;
+
+        }
+
+
+        /*
+         * Display videos
+         */
+
+        data.items.forEach(video => {
+
+          const videoId =
+            video.id?.videoId;
+
+          const snippet =
+            video.snippet;
+
+          if (!videoId || !snippet) {
+            return;
+          }
+
+          const title =
+            escapeHTML(snippet.title);
+
+          const thumbnail =
+            snippet.thumbnails?.high?.url ||
+            snippet.thumbnails?.medium?.url ||
+            snippet.thumbnails?.default?.url;
+
+          const publishedDate =
+            new Date(
+              snippet.publishedAt
+            ).toLocaleDateString(
+              undefined,
+              {
+                year: "numeric",
+                month: "long",
+                day: "numeric"
+              }
+            );
+
+          const card =
+            document.createElement("article");
+
+          card.className =
+            "video-card";
+
+          card.innerHTML = `
+
+            <img
+              class="thumbnail"
+              src="${thumbnail}"
+              alt="${title}"
+              loading="lazy">
+
+            <div class="video-content">
+
+              <h3 class="video-title">
+                ${title}
+              </h3>
+
+              <div class="date">
+                Published ${publishedDate}
+              </div>
+
+              <a
+                class="watch-button"
+                href="https://www.youtube.com/watch?v=${encodeURIComponent(videoId)}"
+                target="_blank"
+                rel="noopener noreferrer">
+                ▶ Watch Video
+              </a>
+
+            </div>
+
+          `;
+
+          videosContainer.appendChild(card);
+
+        });
+
+      }
+
+
+      /*
+       * ============================================
+       * ERROR HANDLING
+       * ============================================
+       */
+
+      catch (err) {
+
+        loading.style.display = "none";
+
+        error.style.display = "block";
+
+        const message =
+          err?.message ||
+          "Unknown error.";
+
+        error.innerHTML = `
+
+          <h3>⚠️ Unable to load videos</h3>
+
+          <p>
+            The YouTube request failed.
+            Here is the actual error:
+          </p>
+
+          <pre>${escapeHTML(message)}</pre>
+
+        `;
+
+      }
+
+    }
+
+
+    /*
+     * ============================================
+     * SECURITY HELPER
+     * ============================================
+     */
+
+    function escapeHTML(text) {
+
+      const div =
+        document.createElement("div");
+
+      div.textContent =
+        text;
+
+      return div.innerHTML;
+
+    }
+
+
+    /*
+     * ============================================
+     * START
+     * ============================================
+     */
+
+    loadVideos();
+
+  </script>
+
+</body>
+</html>

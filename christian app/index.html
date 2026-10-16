@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="manifest" href="/manifest.json">
+<meta name="theme-color" content="#1565c0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Living a Christian Life</title>
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            background: #e3f2fd;
+            color: #0d47a1;
+            text-align: center;
+        }
+
+        header {
+            background: #0d47a1;
+            color: white;
+            padding: 35px 15px;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 32px;
+        }
+
+        header p {
+            font-size: 18px;
+            margin-bottom: 0;
+        }
+
+        nav {
+            background: white;
+            padding: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+
+        nav a {
+            color: #0d47a1;
+            text-decoration: none;
+            font-weight: bold;
+            margin: 0 8px;
+        }
+
+        .container {
+            max-width: 750px;
+            margin: auto;
+            padding: 25px 15px;
+        }
+
+        .card {
+            background: white;
+            padding: 25px;
+            margin-bottom: 25px;
+            border-radius: 15px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+
+        h2 {
+            color: #0d47a1;
+        }
+
+        .welcome {
+            font-size: 25px;
+            font-weight: bold;
+        }
+
+        .button {
+            display: inline-block;
+            background: #0d47a1;
+            color: white;
+            padding: 14px 22px;
+            margin: 8px;
+            border-radius: 10px;
+            text-decoration: none;
+            font-size: 17px;
+            font-weight: bold;
+        }
+
+        .button:hover {
+            background: #1565c0;
+        }
+
+        .verse {
+            font-size: 19px;
+            font-style: italic;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        .encouragement {
+            font-size: 18px;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        label {
+            display: block;
+            text-align: left;
+            font-weight: bold;
+            margin-top: 15px;
+            margin-bottom: 7px;
+        }
+
+        input,
+        textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #90caf9;
+            border-radius: 8px;
+            font-size: 16px;
+        }
+
+        textarea {
+            height: 120px;
+            resize: vertical;
+        }
+
+        .post-button {
+            width: 100%;
+            padding: 14px;
+            margin-top: 20px;
+            background: #0d47a1;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .opinion {
+            text-align: left;
+            background: #f1f8ff;
+            border-left: 5px solid #0d47a1;
+            padding: 15px;
+            margin-top: 15px;
+            border-radius: 8px;
+        }
+
+        .opinion strong {
+            font-size: 18px;
+        }
+
+        .opinion p {
+            color: #333;
+            line-height: 1.5;
+        }
+
+        footer {
+            background: #0d47a1;
+            color: white;
+            padding: 25px 15px;
+            margin-top: 30px;
+        }
+
+    </style>
+
+</head>
+<script>
+if ("serviceWorker" in navigator) {
+  window.addEventListener("load", () => {
+    navigator.serviceWorker.register("/service-worker.js")
+      .then(() => console.log("Service Worker registered successfully"))
+      .catch(error => console.error("Service Worker registration failed:", error));
+  });
+}
+</script>
+
+
+<body>
+
+
+<header>
+
+    <h1>Living a Christian Life</h1>
+
+    <p>
+        Growing in faith, wisdom, and knowledge.
+    </p>
+
+</header>
+
+
+<nav>
+
+    <a href="#home">Home</a>
+
+    <a href="#verse">Bible</a>
+
+    <a href="#encouragement">Encouragement</a>
+
+    <a href="#opinion">Opinions</a>
+    <a href="season.html">
+  🌿 Current Season
+</a>
+
+</nav>
+
+
+<div class="container">
+
+
+    <!-- HOME -->
+
+    <div class="card" id="home">
+
+        <p class="welcome">
+            Welcome to My Christian Website
+        </p>
+
+        <p>
+            Hello! I'm Obadiah.
+        </p>
+
+        <p>
+            This website is created to encourage people
+            to grow in faith, wisdom, and knowledge while
+            trusting in Jesus Christ.
+        </p>
+
+
+        <a href="about.html" class="button">
+            👤 About Me
+        </a>
+
+
+        <a
+            href="https://docs.google.com/document/d/1QmWDWxdYfJk8kHvMhfUG6IsOHlrLmuL0DTCeID7xD-Q/edit?usp=drivesdk"
+            class="button"
+            target="_blank">
+            📖 Read My Book
+        </a>
+
+
+        <a href="opinions.html" class="button">
+            💬 All Opinions
+        </a>
+
+    </div>
+
+
+
+    <!-- BIBLE VERSE -->
+
+    <div class="card" id="verse">
+
+        <h2>📖 Bible Verse</h2>
+
+        <p class="verse">
+            "Trust in the Lord with all your heart
+            and lean not on your own understanding."
+        </p>
+
+        <p>
+            <strong>Proverbs 3:5</strong>
+        </p>
+
+    </div>
+
+
+
+    <!-- ENCOURAGEMENT -->
+
+    <div class="card" id="encouragement">
+
+        <h2>🙏 Christian Encouragement</h2>
+
+        <p class="encouragement">
+            Keep trusting God even when life becomes difficult.
+            Continue praying, learning God's Word, and showing
+            love to others.
+        </p>
+
+        <p class="encouragement">
+            Remember that you do not have to walk alone.
+            Keep your faith in Jesus Christ and continue growing
+            every day.
+        </p>
+
+    </div>
+
+
+
+    <!-- OPINION FORM -->
+
+    <div class="card" id="opinion">
+
+        <h2>💬 Share Your Opinion</h2>
+
+        <p>
+            Your thoughts and ideas are welcome.
+            Share what you think about the Christian life.
+        </p>
+
+
+        <form id="opinionForm">
+
+
+            <label for="name">
+                Your Name
+            </label>
+
+
+            <input
+                type="text"
+                id="name"
+                placeholder="Enter your name"
+                required
+            >
+
+
+            <label for="opinionText">
+                Your Opinion
+            </label>
+
+
+            <textarea
+                id="opinionText"
+                placeholder="Write your thoughts here..."
+                required>
+            </textarea>
+
+
+            <button
+                type="submit"
+                class="post-button">
+                Post Opinion
+            </button>
+
+
+        </form>
+
+    </div>
+
+
+
+    <!-- RECENT OPINIONS -->
+
+    <div class="card">
+
+        <h2>🗣️ Recent Opinions</h2>
+
+        <div id="opinionsList">
+
+            <p>
+                No opinions have been posted yet.
+            </p>
+
+        </div>
+
+
+        <a href="opinions.html" class="button">
+            See All Opinions
+        </a>
+
+    </div>
+
+
+</div>
+
+
+
+<footer>
+
+    <p>
+        © 2026 Living a Christian Life
+    </p>
+
+    <p>
+        Growing in faith, wisdom, and knowledge.
+    </p>
+
+</footer>
+
+
+
+<script>
+
+    const form =
+        document.getElementById("opinionForm");
+
+    const opinionsList =
+        document.getElementById("opinionsList");
+
+
+    let opinions =
+        JSON.parse(
+            localStorage.getItem("christianOpinions")
+        ) || [];
+
+
+    function displayOpinions() {
+
+        opinionsList.innerHTML = "";
+
+
+        if (opinions.length === 0) {
+
+            opinionsList.innerHTML =
+                "<p>No opinions have been posted yet.</p>";
+
+            return;
+        }
+
+
+        opinions.forEach(function(item) {
+
+            const div =
+                document.createElement("div");
+
+            div.className = "opinion";
+
+
+            const name =
+                document.createElement("strong");
+
+            name.textContent =
+                "👤 " + item.name;
+
+
+            const text =
+                document.createElement("p");
+
+            text.textContent =
+                item.opinion;
+
+
+            div.appendChild(name);
+
+            div.appendChild(text);
+
+            opinionsList.appendChild(div);
+
+        });
+
+    }
+
+
+
+    form.addEventListener(
+        "submit",
+        function(event) {
+
+            event.preventDefault();
+
+
+            const name =
+                document
+                .getElementById("name")
+                .value
+                .trim();
+
+
+            const opinion =
+                document
+                .getElementById("opinionText")
+                .value
+                .trim();
+
+
+            if (
+                name === "" ||
+                opinion === ""
+            ) {
+
+                alert(
+                    "Please enter your name and opinion."
+                );
+
+                return;
+            }
+
+
+            opinions.push({
+
+                name: name,
+
+                opinion: opinion
+
+            });
+
+
+            localStorage.setItem(
+                "christianOpinions",
+                JSON.stringify(opinions)
+            );
+
+
+            form.reset();
+
+
+            displayOpinions();
+
+
+            alert(
+                "Thank you for sharing your opinion!"
+            );
+
+        }
+    );
+
+
+    displayOpinions();
+
+</script>
+
+
+</body>
+
+</html>

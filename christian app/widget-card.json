@@ -1,0 +1,32 @@
+{
+  "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
+  "type": "AdaptiveCard",
+  "version": "1.5",
+  "body": [
+    {
+      "type": "TextBlock",
+      "text": "✝ Living a Christian Life",
+      "size": "Large",
+      "weight": "Bolder",
+      "wrap": true
+    },
+    {
+      "type": "TextBlock",
+      "text": "Growing in faith, wisdom, and knowledge.",
+      "wrap": true
+    },
+    {
+      "type": "TextBlock",
+      "text": "Bible • Prayer • Encouragement",
+      "weight": "Bolder",
+      "wrap": true
+    }
+  ],
+  "actions": [
+    {
+      "type": "Action.OpenUrl",
+      "title": "Open App",
+      "url": "https://shimmering-tiramisu-f37c2c.netlify.app/"
+    }
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "id": "/",
+  "name": "Living a Christian Life",
+  "short_name": "Christian Life",
+  "description": "A Christian app for growing in faith, wisdom, and knowledge through Bible study, prayer, encouragement, Christian teaching, and helpful resources.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "display_override": [
+    "window-controls-overlay",
+    "standalone"
+  ],
+  "orientation": "portrait",
+  "theme_color": "#0d47a1",
+  "background_color": "#ffffff",
+  "lang": "en",
+  "dir": "ltr",
+  "icons": [
+    {
+      "src": "/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}

@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Opinions - Living a Christian Life</title>
+
+    <style>
+
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            background: #e3f2fd;
+            color: #0d47a1;
+        }
+
+        header {
+            background: #0d47a1;
+            color: white;
+            text-align: center;
+            padding: 30px 15px;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 32px;
+        }
+
+        .container {
+            max-width: 750px;
+            margin: auto;
+            padding: 25px 15px;
+        }
+
+        .card {
+            background: white;
+            padding: 25px;
+            margin-bottom: 25px;
+            border-radius: 15px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+
+        h2 {
+            color: #0d47a1;
+            text-align: center;
+        }
+
+        .opinion {
+            background: #f1f8ff;
+            border-left: 5px solid #0d47a1;
+            padding: 15px;
+            margin-top: 15px;
+            border-radius: 8px;
+        }
+
+        .opinion strong {
+            font-size: 18px;
+            color: #0d47a1;
+        }
+
+        .opinion p {
+            color: #333;
+            line-height: 1.5;
+        }
+
+        .button {
+            display: block;
+            text-align: center;
+            background: #0d47a1;
+            color: white;
+            padding: 14px;
+            margin-top: 25px;
+            border-radius: 10px;
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .button:hover {
+            background: #1565c0;
+        }
+
+        footer {
+            background: #0d47a1;
+            color: white;
+            text-align: center;
+            padding: 25px;
+            margin-top: 30px;
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+<header>
+
+    <h1>💬 Visitors' Opinions</h1>
+
+    <p>
+        Share your thoughts and read what others have shared.
+    </p>
+
+</header>
+
+
+<div class="container">
+
+    <div class="card">
+
+        <h2>🗣️ All Opinions</h2>
+
+        <div id="opinionsList">
+            <p>No opinions have been posted yet.</p>
+        </div>
+
+        <a href="index.html" class="button">
+            ← Back to Home
+        </a>
+
+    </div>
+
+</div>
+
+
+<footer>
+
+    <p>© 2026 Living a Christian Life</p>
+
+    <p>
+        Growing in faith, wisdom, and knowledge.
+    </p>
+
+</footer>
+
+
+<script>
+
+    const opinionsList =
+        document.getElementById("opinionsList");
+
+
+    function displayOpinions() {
+
+        const opinions =
+            JSON.parse(
+                localStorage.getItem("christianOpinions")
+            ) || [];
+
+
+        opinionsList.innerHTML = "";
+
+
+        if (opinions.length === 0) {
+
+            opinionsList.innerHTML =
+                "<p>No opinions have been posted yet.</p>";
+
+            return;
+        }
+
+
+        opinions.forEach(function(item) {
+
+            const div =
+                document.createElement("div");
+
+            div.className = "opinion";
+
+
+            const name =
+                document.createElement("strong");
+
+            name.textContent =
+                "👤 " + item.name;
+
+
+            const text =
+                document.createElement("p");
+
+            text.textContent =
+                item.opinion;
+
+
+            div.appendChild(name);
+
+            div.appendChild(text);
+
+            opinionsList.appendChild(div);
+
+        });
+
+    }
+
+
+    displayOpinions();
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Christian Life - Season</title>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #eef8ef;
+      text-align: center;
+      color: #173b22;
+    }
+
+    .loading {
+      padding: 80px 20px;
+    }
+
+    .icon {
+      font-size: 55px;
+    }
+
+    h1 {
+      color: #2e7d32;
+    }
+
+    p {
+      line-height: 1.6;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="loading">
+    <div class="icon">🌿</div>
+
+    <h1>Loading Season...</h1>
+
+    <p>
+      Preparing your current Christian Life season.
+    </p>
+  </div>
+
+  <script>
+
+    /*
+      ==============================
+      SEASON SETTINGS
+      ==============================
+
+      Change these dates whenever you
+      want a new season to begin.
+
+      Season 1:
+      January 1 - June 30
+
+      Season 2:
+      July 1 - December 31
+    */
+
+    const today = new Date();
+
+    const month = today.getMonth() + 1;
+    const day = today.getDate();
+
+    let currentSeason;
+
+
+    // Season 1: January 1 - June 30
+
+    if (
+      month >= 1 &&
+      month <= 6
+    ) {
+
+      currentSeason = "season1.html";
+
+    }
+
+
+    // Season 2: July 1 - December 31
+
+    else {
+
+      currentSeason = "season2.html";
+
+    }
+
+
+    // Open the correct season
+
+    window.location.replace(currentSeason);
+
+  </script>
+
+</body>
+</html>
